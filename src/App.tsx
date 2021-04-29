@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { EditThing } from "./EditThing";
+import UserConfirmation from "./UserConfirmation";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Router
+    getUserConfirmation={(message, callback) => {
+      UserConfirmation(message, callback);
+    }}
+  >
+    <Route exact path="/">
+      <h1>Home</h1>
+      <p>
+        <Link to="/edit">Edit</Link>
+      </p>
+    </Route>
+    <Route exact path="/edit" component={EditThing} />
+  </Router>
+);
 
 export default App;
