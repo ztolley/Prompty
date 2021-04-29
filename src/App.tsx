@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import { EditThing } from "./EditThing";
 import UserConfirmation from "./UserConfirmation";
 
-const App = () => (
+const App: React.FC = () => (
   <Router
     getUserConfirmation={(message, callback) => {
       UserConfirmation(message, callback);
